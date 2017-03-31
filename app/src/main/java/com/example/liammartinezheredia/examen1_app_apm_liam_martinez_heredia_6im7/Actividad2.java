@@ -3,6 +3,7 @@ package com.example.liammartinezheredia.examen1_app_apm_liam_martinez_heredia_6i
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +24,18 @@ public class Actividad2 extends AppCompatActivity {
 
 
 
-    public void onClickEnviar(){
+
+    public void onClickEnviar(View miview){
         try {
+            Toast.makeText(this, "Envia tu correo ", Toast.LENGTH_SHORT).show();
             Intent enviamail = new Intent(Intent.ACTION_SEND);
             enviamail.setType("text/plain");
-            enviamail.putExtra(Intent.EXTRA_SUBJECT, "Asunto :  examen 1er parcial");
-            enviamail.putExtra(Intent.EXTRA_TEXT, "Contenido del correo: " + num + "dolares");
-            //enviamail.putExtra(Intent.EXTRA_EMAIL, new String[] { "eoropeza@ipn.mx" } );
-            enviamail.putExtra(Intent.EXTRA_EMAIL, new String[]{"panchito.yoo@gmail.com"});
+            enviamail.putExtra(Intent.EXTRA_EMAIL, new String[] { "eoropeza@ipn.mx" } );
+            enviamail.putExtra(Intent.EXTRA_SUBJECT, "  examen 1er parcial");
+            enviamail.putExtra(Intent.EXTRA_TEXT,"son " + num + "  dolares");
+
             startActivity(enviamail);
-            Toast.makeText(this, "Correo enviado ", Toast.LENGTH_SHORT).show();
+
         }
         catch(Exception e){
             Toast.makeText(this,"Ya valio",Toast.LENGTH_SHORT).show();
